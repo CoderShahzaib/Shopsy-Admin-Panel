@@ -58,18 +58,16 @@ This is a **personal demo project** designed for learning and portfolio purposes
 git clone https://github.com/yourusername/Shopsy-Admin-Panel.git
 Navigate to the project folder
 
+## Getting Started
+
+### Navigate to the project folder
 cd Shopsy-Admin-Panel
-Apply migrations
+
+**Apply database migrations**
+
 
 dotnet ef database update
-Run the project
+
+### Run the project
 
 dotnet run
-Usage
-Login with demo Admin or Seller credentials
-
-Explore dashboards and functionalities based on your role
-
-Update order status (mark delivered)
-
-Manage products, users, and categories (Admin only)
