@@ -1,0 +1,106 @@
+﻿@using Shopsy.UI.Models
+@model SaleViewModel
+
+@{
+    ViewData["Title"] = "Sales";
+}
+
+<div class="sales-page">
+
+    <div class="page-header">
+        <h1>Sales</h1>
+        <a asp-controller="Dashboard"
+           asp-action="Index"
+           class="btn primary">
+            View Reports
+        </a>
+    </div>
+
+    <div class="stats">
+        <div class="card revenue">
+            <h3>Total Sales</h3>
+            <p>@Model.TotalRevenue.ToString("C")</p>
+        </div>
+
+        <div class="card customers">
+            <h3>Total Orders</h3>
+            <p>@(Model?.Sales.Count ?? 0)</p>
+        </div>
+    </div>
+
+    <div class="panel">
+        <h2>Recent Sales</h2>
+
+        <table class="sales-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Customer</th>
+                    <th>Payment</th>
+                    <th>Status</th>
+                    <th>Date</th>
+                    <th>Total</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @if (Model != null && Model.Sales.Any())
+                {
+                    foreach (var sale in Model.Sales)
+                    {
+                        <tr>
+                            <td>@sale.Id</td>
+
+                            <td>
+                                <strong>@sale.CustomerName</strong><br />
+                                <small>ID: @sale.CustomerId</small>
+                            </td>
+
+                            <td>@sale.PaymentMethod</td>
+
+                            <td>
+                                <span class="badge @(sale.PaymentStatus == "Paid" ? "success" : "warning")">
+                                    @sale.PaymentStatus
+                                </span>
+                            </td>
+
+                            <td>@sale.OrderDate.ToString("dd MMM yyyy")</td>
+
+                            <td>
+                                <strong>@sale.GrandTotal.ToString("C")</strong>
+                            </td>
+
+                            <td>
+                                @if (!sale.IsDelivered)
+                                {
+                                    <form asp-controller="Sales"
+                                          asp-action="MarkDelivered"
+                                          asp-route-id="@sale.Id"
+                                          method="post">
+                                        <button class="btn small primary">
+                                            Mark Delivered
+                                        </button>
+                                    </form>
+                                }
+                                else
+                                {
+                                    <span class="badge success">Delivered</span>
+                                }
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="7" class="text-center">
+                            No sales found
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+</div>

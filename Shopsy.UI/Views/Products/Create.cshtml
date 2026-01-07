@@ -1,0 +1,53 @@
+﻿@{
+    ViewData["Title"] = "Create Product";
+}
+
+<div class="create-product-page">
+
+    <div class="page-header">
+        <h1>Add New Product</h1>
+    </div>
+
+    <div class="panel product-form">
+        <form asp-action="Create" method="post">
+
+            <div class="form-row">
+                <label>Product Name</label>
+                <input type="text" name="Name" placeholder="Enter product name" required />
+            </div>
+
+            <div class="form-row">
+                <label>Description</label>
+                <textarea name="Description" placeholder="Enter product description" rows="4" required></textarea>
+            </div>
+
+            <div class="form-row">
+                <label>Price (PKR)</label>
+                <input type="number" name="Price" placeholder="Enter price" step="0.01" required />
+            </div>
+
+            <div class="form-row">
+                <label>Quantity</label>
+                <input type="number" name="Quantity" placeholder="Enter quantity in stock" required />
+            </div>
+
+            <div class="form-row">
+                <label>Category</label>
+                <select name="CategoryId" required>
+                    <option value="">Select Category</option>
+                    <option value="1">Mobiles</option>
+                    <option value="2">Laptop</option>
+                </select>
+            </div>
+
+            <div class="form-row">
+                <label>Product Image URL</label>
+                <input type="url" name="ProductImageUrl" placeholder="Enter image URL" required />
+            </div>
+
+            <button type="submit" class="btn primary">Add Product</button>
+
+        </form>
+    </div>
+
+</div>

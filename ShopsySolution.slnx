@@ -1,0 +1,14 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".gitignore" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="Shopsy.Core/Shopsy.Core.csproj" />
+    <Project Path="Shopsy.Infrastructure/Shopsy.Infrastructure.csproj" />
+    <Project Path="Shopsy.UI/Shopsy.UI.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="Shopsy.ControllerTests/Shopsy.ControllerTests.csproj" />
+    <Project Path="Shopsy.ServiceTests/Shopsy.ServiceTests.csproj" />
+  </Folder>
+</Solution>

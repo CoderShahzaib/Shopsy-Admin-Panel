@@ -1,0 +1,38 @@
+﻿@using Shopsy.Core.DTOs
+@model IEnumerable<UserResponseDTO>
+@{
+    ViewData["Title"] = "Accounts";
+}
+
+<div class="accounts-page">
+
+    <div class="panel">
+        <table class="accounts-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach(var user in Model)
+                {
+<tr>
+                        <td>@user.Id</td>
+                        <td>@user.PersonName</td>
+                        <td>@user.Email</td>
+                        <td>
+                            <a asp-action="Delete" asp-route-id="@user.Id" class="action delete">Delete</a>
+                        </td>
+                    </tr>
+                }
+
+                
+            </tbody>
+        </table>
+    </div>
+
+</div>

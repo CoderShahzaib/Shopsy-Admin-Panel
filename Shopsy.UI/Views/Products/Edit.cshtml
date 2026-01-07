@@ -1,0 +1,58 @@
+﻿@model Shopsy.UI.Models.Product
+
+@{
+    ViewData["Title"] = "Edit Product";
+}
+
+<div class="edit-product-page">
+
+    <div class="page-header">
+        <h1>Edit Product</h1>
+    </div>
+
+    <div class="panel product-form">
+        <form asp-action="Edit" asp-controller="Products" asp-route-id="@Model.Id" method="post">
+
+            <input type="hidden" asp-for="Id" />
+
+            <div class="form-row">
+                <label>Product Name</label>
+                <input asp-for="Name" required />
+            </div>
+
+            <div class="form-row">
+                <label>Description</label>
+                <textarea asp-for="Description" rows="4" required></textarea>
+            </div>
+
+            <div class="form-row">
+                <label>Price (PKR)</label>
+                <input asp-for="Price" type="number" step="0.01" required />
+            </div>
+
+            <div class="form-row">
+                <label>Quantity</label>
+                <input asp-for="Quantity" type="number" required />
+            </div>
+
+            <div class="form-row">
+                <label>Category</label>
+                <select asp-for="CategoryId" required>
+                    <option value="0">Select Category</option>
+                    <option value="1">Mobiles</option>
+                    <option value="2">Laptop</option>
+                </select>
+            </div>
+
+
+            <div class="form-row">
+                <label>Product Image URL</label>
+                <input asp-for="ProductImageUrl" type="url" required />
+            </div>
+
+            <button type="submit" class="btn primary">Update Product</button>
+
+        </form>
+    </div>
+
+</div>

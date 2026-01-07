@@ -1,0 +1,27 @@
+﻿@model Shopsy.UI.Models.Category
+@{
+    ViewData["Title"] = "Edit Category";
+}
+
+<div class="edit-category-page">
+
+    <div class="page-header">
+        <h1>Edit Category</h1>
+    </div>
+
+    <div class="panel category-form">
+        <form asp-action="Edit" method="post">
+
+            <input type="hidden" asp-for="Id" />
+
+            <div class="form-row">
+                <label>Category Name</label>
+                <input type="text" asp-for="Name" required />
+            </div>
+
+            <button type="submit" class="btn primary">Update Category</button>
+
+        </form>
+    </div>
+
+</div>

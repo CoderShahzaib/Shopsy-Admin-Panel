@@ -1,0 +1,39 @@
+﻿@using System.Security.Claims
+
+@{
+    var currentController = ViewContext.RouteData.Values["controller"]?.ToString();
+
+    var menuItems = new[]
+    {
+        new { Name = "Dashboard", Icon = "📊", Roles = new[] { "Admin", "Seller" } },
+        new { Name = "Products",  Icon = "📦", Roles = new[] { "Admin", "Seller" } },
+        new { Name = "Categories",Icon = "🗂️", Roles = new[] { "Admin", "Seller" } },
+        new { Name = "Sales",     Icon = "💰", Roles = new[] { "Admin", "Seller" } },
+        new { Name = "Users",     Icon = "👤", Roles = new[] { "Admin" } } 
+    };
+}
+
+<aside id="adminSidebar" class="admin-sidebar">
+    <nav class="sidebar-nav">
+        <ul class="sidebar-menu">
+
+            @foreach (var item in menuItems)
+            {
+                if (!item.Roles.Any(role => User.IsInRole(role)))
+                {
+                    continue;
+                }
+
+                <li class="sidebar-item">
+                    <a asp-controller="@item.Name"
+                       asp-action="Index"
+                       class="sidebar-link @(currentController == item.Name ? "active" : "")">
+                        <span class="sidebar-icon">@item.Icon</span>
+                        <span class="sidebar-text">@item.Name</span>
+                    </a>
+                </li>
+            }
+
+        </ul>
+    </nav>
+</aside>

@@ -1,0 +1,19 @@
+﻿<header class="admin-header">
+    <div class="header-content">
+
+        <button id="menuBtn" class="menu-btn">☰</button>
+
+        <h2 class="logo">Shopsy Admin Panel</h2>
+
+        <div class="header-actions">
+            <span>
+                @User.FindFirst(System.Security.Claims.ClaimTypes.Role)?.Value
+            </span>
+
+            <a asp-action="Logout" asp-controller="Account" class="logout-btn">
+                Logout
+            </a>
+
+        </div>
+    </div>
+</header>

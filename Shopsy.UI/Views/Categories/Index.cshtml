@@ -1,0 +1,58 @@
+﻿@using Shopsy.UI.Models
+@model IEnumerable<Category>
+
+@{
+    ViewData["Title"] = "Categories";
+}
+
+<div class="categories-page">
+
+    <div class="page-header">
+        <h1>Categories</h1>
+
+        @if (User.IsInRole("Admin"))
+        {
+            <a asp-action="Create" class="btn primary">+ Add Category</a>
+        }
+    </div>
+
+    <div class="panel">
+        <table class="categories-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Category Name</th>
+
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <th>Actions</th>
+                    }
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var category in Model)
+                {
+                    <tr>
+                        <td>@category.Id</td>
+                        <td>@category.Name</td>
+
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <td>
+                                <a asp-action="Edit"
+                                   asp-route-id="@category.Id"
+                                   class="btn primary">Edit</a>
+
+                                <a asp-action="Delete"
+                                   asp-route-id="@category.Id"
+                                   class="btn danger">Delete</a>
+                            </td>
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+</div>

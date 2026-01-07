@@ -1,0 +1,54 @@
+﻿@using Shopsy.UI.Models
+@model LoginViewModel
+
+@{
+    ViewData["Title"] = "Login";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Login | Shopsy Admin</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+
+    <div class="login-page">
+        <div class="login-card">
+
+            <div class="login-header">
+                <h1>Shopsy Admin</h1>
+                <p>Sign in to continue</p>
+            </div>
+
+            <form asp-action="Login" asp-controller="Account" method="post">
+                @Html.AntiForgeryToken()
+
+                <div class="form-row">
+                    <label>Email</label>
+                    <input asp-for="Email" type="email" placeholder="admin@shopsy.com" />
+                    <span asp-validation-for="Email"></span>
+                </div>
+
+                <div class="form-row">
+                    <label>Password</label>
+                    <input asp-for="Password" type="password" placeholder="********" />
+                    <span asp-validation-for="Password"></span>
+                </div>
+
+                <button type="submit" class="btn primary full">
+                    Login
+                </button>
+            </form>
+
+            <div class="login-footer">
+                <p>© 2025 Shopsy Admin Panel</p>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>

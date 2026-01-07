@@ -1,0 +1,57 @@
+﻿@using Shopsy.UI.Models
+@model IEnumerable<Product>
+
+@{
+    ViewData["Title"] = "Products";
+}
+
+<div class="products-page">
+
+    <div class="page-header">
+        <h1>Products</h1>
+        <a asp-action="Create" class="btn primary">+ Add Product</a>
+    </div>
+
+    <div class="panel">
+        <table class="products-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Stock</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var product in Model)
+                {
+                    <tr>
+                        <td>@product.Id</td>
+                        <td>@product.Name</td>
+                        <td>@product.Price</td>
+                        <td>@product.Quantity</td>
+
+                        <td class="@(product.Quantity > 0 ? "success" : "danger")">
+                            @(product.Quantity > 0 ? "Active" : "Out of Stock")
+                        </td>
+
+                        <td>
+                            <a asp-action="Edit"
+                               asp-route-id="@product.Id"
+                               class="action edit">Edit</a>
+
+                            <a asp-action="Delete"
+                               asp-route-id="@product.Id"
+                               asp-controller="Products"
+                               class="action delete">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+</div>

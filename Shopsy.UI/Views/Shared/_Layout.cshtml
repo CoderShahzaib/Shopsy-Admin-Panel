@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"]</title>
+
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+
+<body class="bg-gray-100 text-gray-800">
+
+    <partial name="~/Views/Shared/Partials/_Header.cshtml" />
+
+    <div class="flex">
+
+        <partial name="~/Views/Shared/Partials/_Sidebar.cshtml" />
+
+        <main class="admin-main">
+            @RenderBody()
+        </main>
+
+
+
+
+
+    </div>
+    <script src="~/js/site.js"></script>
+</body>
+
+</html>
